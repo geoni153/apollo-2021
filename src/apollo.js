@@ -1,7 +1,8 @@
-import ApolloClient from "apollo-boost";
+import { InMemoryCache, ApolloClient } from "@apollo/client";
 
 const client = new ApolloClient({
-    uri: "https://movieql.now.sh/"
+    cache: new InMemoryCache(0),
+    uri: "http://localhost:4000/"
 });
 
 export default client;
