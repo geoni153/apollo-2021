@@ -12,6 +12,10 @@ const GET_MOVIE = gql`
             rating
             description_intro
         }
+        suggestions(id: $id){
+            id
+            medium_cover_image
+        }
     }
 `;
 
@@ -70,8 +74,10 @@ export default () => {
                     </>
             )}
             </Column>
-            <Poster bg={data && data.movie ? data.movie.medium_cover_image : ""}>
-            </Poster>
+            {/* <Poster bg={data && data.movie ? data.movie.medium_cover_image : ""}>
+            </Poster> */}
+            <Poster bg={data?.movie?.medium_cover_image}></Poster>
+            {data?.suggestions?.map(s => (<Poster bg={s.medium_cover_image} />))}
         </Container>
     );
 };
